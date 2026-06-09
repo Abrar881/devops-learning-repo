@@ -1,0 +1,19 @@
+## Bandit Level 0 → Level 1
+
+**Challenge:** Log into the game using SSH
+- host:  bandit.labs.overthewire.or
+- port: 2220
+- username: bandit0
+- password: bandit0
+
+**Solution:**
+```bash
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+cat readme
+```
+
+**Explanation:**
+- 'cat' command displays file content of readme.txt
+**Password:** [ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If]
+
+**What I learned:** 'cat' command allows user to see what's inside a file
