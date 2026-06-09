@@ -1,0 +1,25 @@
+## Bandit Level 10 → Level 11
+
+**Challenge:** The password is stored in `data.txt`, which contains base64 encoded data.
+
+**Solution:**
+```bash
+base64 -d data.txt
+
+Explanation:
+
+base64 -d decodes base64 encoded data (the -d flag stands for decode)
+
+Without -d, base64 would encode data instead
+
+The file contains encoded text, so decoding reveals the plaintext password
+
+Password: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+What I learned:
+
+Base64 is an encoding format, not encryption — it can be decoded without a key
+
+The base64 command can both encode (base64 file) and decode (base64 -d file)
+
+Decoding is the reverse process of encoding, restoring the original data
