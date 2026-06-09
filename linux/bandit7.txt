@@ -1,0 +1,19 @@
+## Bandit Level 7 → Level 8
+
+**Challenge:** The password is stored in `data.txt` next to the word `millionth`.
+
+**Solution:**
+```bash
+grep millionth data.txt
+
+**Explanation**
+grep searches for lines containing the word "millionth"
+
+The password appears on the same line, separated by whitespace
+
+**What I learned**
+grep prints entire lines that match a pattern
+
+The password can be found directly next to the search word on the same line
+
+**Password** [dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc]
