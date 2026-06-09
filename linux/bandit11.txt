@@ -1,0 +1,32 @@
+## Bandit Level 11 → Level 12
+
+**Challenge:** The password is stored in `data.txt`, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions (ROT13).
+
+**Solution:**
+```bash
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+Output:
+
+Explanation:
+
+ROT13 shifts each letter by 13 positions (A→N, B→O, ..., M→Z, N→A, etc.)
+
+tr 'A-Za-z' 'N-ZA-Mn-za-m' performs the translation:
+
+N-ZA-M maps uppercase A-Z to N-Z followed by A-M
+
+n-za-m maps lowercase a-z to n-z followed by a-m
+
+Applying ROT13 twice returns the original text (decoding is the same as encoding)
+
+Password: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+What I learned:
+
+ROT13 is a simple substitution cipher used to obscure text, not encrypt it securely
+
+The tr command translates characters from one set to another
+
+Ranges like A-Z and a-z can be combined to create complex mappings
+
+The same command both encodes and decodes ROT13 (symmetrical)
