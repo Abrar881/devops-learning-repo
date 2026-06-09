@@ -1,0 +1,16 @@
+## Bandit Level 3 → Level 4
+
+**Challenge:** The password for the next level is stored in a hidden file in the inhere directory.
+
+**Solution:**
+```bash
+cd inhere
+ls -la
+cat ./"...Hiding-From-You""
+```
+
+**Explanation:**
+- 'cat' command displays file content of ...Hiding-From-You
+**Password:** [2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ]
+
+**What I learned:** have to check content of directory using ls -la
