@@ -1,0 +1,14 @@
+## Bandit Level 2 → Level 3
+
+**Challenge:** find password in  --spaces in this filename-- file located in the home directory
+
+**Solution:**
+```bash
+cat ./"--spaces in this filename--"
+```
+
+**Explanation:**
+- 'cat' command displays file content of --spaces in this filename--
+**Password:** [MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx]
+
+**What I learned:** 'cat' command allows user to see what's inside a file
