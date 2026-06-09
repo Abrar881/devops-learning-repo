@@ -1,0 +1,15 @@
+## Bandit Level 1 → Level 2
+
+**Challenge:** 
+find password for next level in home directory
+
+**Solution:**
+```bash
+cat ./-
+```
+
+**Explanation:**
+- 'cat' command displays file content of "-" file
+**Password:** [263JGJPfgU6LtdEvgfWU1XP5yac29mFx]
+
+**What I learned:** Have to use ./ to tell the system we are looking for a file
