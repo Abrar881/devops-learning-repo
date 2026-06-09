@@ -1,0 +1,17 @@
+## Bandit Level 4 → Level 5
+
+**Challenge:** The password for the next level is stored in a hidden file in the inhere directory.
+
+**Solution:**
+```bash
+ ls
+ cd inhere
+ file ./*f*
+ cat ./-file07
+```
+
+**Explanation:**
+- 'file ./*f*' command displays file type 
+**Password:** [4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw]
+
+**What I learned:** 'file ./*f*' gives me the file type of all files inside directory
