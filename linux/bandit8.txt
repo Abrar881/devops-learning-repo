@@ -1,0 +1,26 @@
+## Bandit Level 8 → Level 9
+
+**Challenge:** The password is stored in `data.txt` and is the only line that occurs only once.
+
+**Solution:**
+```bash
+sort data.txt | uniq -u
+**Explanation**:
+
+sort data.txt arranges all lines in alphabetical order, making identical lines adjacent to each other
+
+uniq -u filters the sorted output to show only lines that appear exactly once
+
+The pipe (|) sends the output of sort as input to uniq
+
+**Password**: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+**What I learned**:
+
+uniq only detects duplicate lines if they are adjacent, so sort must be used first
+
+uniq -u shows only unique lines (those that appear once)
+
+uniq -c would show line counts, which is another way to find the same answer
+
+Piping allows combining multiple commands to solve complex problems in one line
