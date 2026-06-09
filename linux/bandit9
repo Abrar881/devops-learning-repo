@@ -1,0 +1,27 @@
+## Bandit Level 9 → Level 10
+
+**Challenge:** The password is stored in `data.txt` in one of the few human-readable strings, preceded by several `=` characters.
+
+**Solution:**
+```bash
+strings data.txt | grep "="
+
+**Explanation**:
+
+strings data.txt extracts only the human-readable sequences of characters from the binary file
+
+grep "===" filters for lines containing three or more = characters in a row
+
+The password appears after the = signs on the same line
+
+**Password**: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+**What I learned**:
+
+cat and grep alone cannot read binary files properly
+
+strings extracts printable text from any file, even if it contains non-printable data
+
+Piping strings to grep allows searching within binary files
+
+The = characters act as a marker to locate the password line
