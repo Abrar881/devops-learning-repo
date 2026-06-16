@@ -1,0 +1,22 @@
+## Bandit Level 18 → Level 19
+
+**Challenge:** The password is stored in a file called `readme` in the home directory. The `.bashrc` has been modified to log you out immediately when you log in with SSH.
+
+**Solution:**
+
+Log in and run a command directly over SSH without starting an interactive shell:
+```bash
+ssh -p 2220 bandit18@bandit.labs.overthewire.org cat readme
+
+Output:
+ cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+
+What I learned:
+
+SSH can run a single command without starting an interactive shell
+
+The .bashrc file only affects interactive login shells
+
+Passing a command directly to SSH bypasses the modified .bashrc
+
+This is useful when a user's shell startup file prevents normal login
