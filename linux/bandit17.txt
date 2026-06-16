@@ -1,0 +1,31 @@
+## Bandit Level 17 → Level 18
+
+**Challenge:** Two files `passwords.old` and `passwords.new` contain many lines. The password for the next level is in `passwords.new` and is the only line that has been changed between the two files.
+
+**Solution:**
+
+Compare the two files using `diff`:
+```bash
+diff passwords.old passwords.new
+
+
+
+42c42
+< 0vYv4iuDikHzDLKFtxEkJFxewAjjox0c
+---
+> x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+The line with > is the one in passwords.new that differs from passwords.old.
+
+Password: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+
+What I learned:
+
+diff compares two files line by line
+
+< indicates lines only in the first file
+
+> indicates lines only in the second file
+
+The changed line in passwords.new is the password for the next level
+
+diff is useful for finding differences between similar files
