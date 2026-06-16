@@ -1,0 +1,35 @@
+## Bandit Level 19 → Level 20
+
+**Challenge:** Use the setuid binary in the home directory to gain access to the next level's password.
+
+**Solution:**
+
+Identify the setuid binary:
+```bash
+ls -la
+Output shows -rwsr-x--- — the s indicates setuid, owned by bandit20.
+
+Run the binary without arguments to see usage:
+
+bash
+./bandit20-do
+Output:
+
+
+Run a command as another user.
+  Example: ./bandit20-do whoami
+Use the binary to read the password file as bandit20:
+
+bash
+./bandit20-do cat /etc/bandit_pass/bandit20
+Password: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+
+What I learned:
+
+setuid (Set User ID) is a special permission that makes a program run as the file's owner
+
+s in permissions (-rwsr-x---) indicates setuid
+
+This allows a user to act as another user to perform specific tasks temporarily
+
+The binary runs any command as bandit20, including cat to read the password file
