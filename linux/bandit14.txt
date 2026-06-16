@@ -1,0 +1,35 @@
+## Bandit Level 14 → Level 15
+
+**Challenge:** Submit the password for the current level (bandit14) to port 30000 on localhost to receive the next password.
+
+**Solution:**
+
+First, retrieve the current level password:
+```bash
+cat /etc/bandit_pass/bandit14
+Output: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+Connect to port 30000 on localhost using netcat:
+
+bash
+nc localhost 30000
+Once connected, paste the password and press Enter:
+
+
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+The server responds with the next password:
+
+
+Password: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+What I learned:
+
+nc (netcat) is a networking utility that can connect to ports and send/receive data
+
+localhost (127.0.0.1) refers to the same machine you're on
+
+A "port" is like a specific door on a server that different services listen on
+
+Services can listen on ports and respond to input with specific outputs
+
+telnet is another tool that does the same thing but with more verbose output
