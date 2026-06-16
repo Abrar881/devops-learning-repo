@@ -1,0 +1,38 @@
+## Bandit Level 20 → Level 21
+
+**Challenge:** A setuid binary connects to a port you specify, reads a line, compares it to the bandit20 password, and if correct, sends the bandit21 password.
+
+**Solution:**
+
+Find the setuid binary:
+```bash
+ls -la
+Output shows suconnect owned by bandit21 with setuid (-rwsr-x---).
+
+Set up a listener that sends the bandit20 password when connected:
+
+bash
+echo "0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO" | nc -l 12345 &
+Run the suconnect binary to connect to the listener:
+
+bash
+./suconnect 12345
+Output:
+
+
+Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Password matches, sending next password
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+
+What I learned:
+
+nc can listen on a port and send data when a connection is made (nc -l)
+
+Piping echo into nc -l creates a one-shot server that sends data once
+
+The & runs a command in the background so you can run another command
+
+suconnect connects to a listener, reads the password, and responds with the next level's password
+
+Localhost communication between two processes on the same machine
