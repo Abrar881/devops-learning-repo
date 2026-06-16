@@ -1,0 +1,61 @@
+## Bandit Level 16 → Level 17
+
+**Challenge:** Submit the password for the current level (bandit16) to a port on localhost in the range 31000–32000. Find the one server that speaks SSL/TLS and gives the next credentials.
+
+**Solution:**
+
+Scan for open ports:
+```bash
+nmap -p 31000-32000 localhost
+Open ports found:
+
+31046
+
+31518
+
+31691
+
+31790
+
+31960
+
+Test ports with SSL/TLS and send the password. The correct port is 31790:
+
+bash
+echo "kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx" | openssl s_client -connect localhost:31790 -ign_eof
+The server responds with Correct! followed by an RSA private key for bandit17.
+
+Save the key to a file on your local machine:
+
+bash
+nano bandit17.key
+(the entire private key, including -----BEGIN RSA PRIVATE KEY----- and -----END RSA PRIVATE KEY-----)
+
+Set permissions and log in:
+
+bash
+chmod 600 bandit17.key
+ssh -i bandit17.key -p 2220 bandit17@bandit.labs.overthewire.org
+Read the password:
+
+bash
+cat /etc/bandit_pass/bandit17
+Password: EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
+
+What I learned:
+
+nmap scans ports to find open services
+
+openssl s_client tests SSL/TLS connections
+
+Some ports echo back input, others give credentials
+
+The -ign_eof option prevents openssl from closing the connection prematurely
+
+TLSv1.3 handles renegotiation differently than older versions
+
+ssh -i specifies a private key file for authentication
+
+Private keys require chmod 600 (read/write for owner only) for SSH to accept them
+
+-p specifies the port for SSH connections
