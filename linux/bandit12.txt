@@ -1,0 +1,50 @@
+# Bandit Level 12 → Level 13
+
+**Challenge:** `data.txt` is a hexdump of a file that has been repeatedly compressed. Recover the password.
+
+**Solution:**
+
+Create a temp directory and work there:
+```bash
+mktemp -d
+cd /tmp/tmp.qw9eXHFsxX
+cp ~/data.txt .
+Reverse the hexdump and repeatedly decompress:
+
+bash
+xxd -r data.txt > file1
+file file1                          # gzip
+mv file1 file1.gz && gzip -d file1.gz
+
+file file1                          # bzip2
+mv file1 file1.bz2 && bzip2 -d file1.bz2
+
+file file1                          # tar
+tar -xf file1                       # extracts data5.bin
+
+file data5.bin                      # tar
+tar -xf data5.bin                   # extracts data6
+
+file data6                          # tar
+tar -xf data6                       # extracts data8.bin
+
+file data8.bin                      # gzip
+mv data8.bin data8.gz && gzip -d data8.gz
+
+file data8                          # ASCII text
+cat data8
+Password: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+What I learned:
+
+xxd -r converts hexdump back to binary
+
+Different compression formats: gzip, bzip2, tar
+
+Each decompression step reveals a new file that may be compressed again
+
+Working in /tmp prevents clutter in the home directory
+
+Patience and checking file after each step is essential
+
+tar archives do not need renaming before extraction
