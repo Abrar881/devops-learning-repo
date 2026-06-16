@@ -1,0 +1,34 @@
+## Bandit Level 13 → Level 14
+
+**Challenge:** The password for the next level is stored in `/etc/bandit_pass/bandit14` and can only be read by user bandit14. You are given a private SSH key to log in as bandit14.
+
+**Solution:**
+
+Copy the SSH key from the Bandit server to your local machine:
+```bash
+scp -P 2220 bandit13@bandit.labs.overthewire.org:~/sshkey.private .
+Set the correct permissions on the key file:
+
+bash
+chmod 600 sshkey.private
+Use the key to log in as bandit14:
+
+bash
+ssh -i sshkey.private -p 2220 bandit14@bandit.labs.overthewire.org
+Once logged in, read the password:
+
+bash
+cat /etc/bandit_pass/bandit14
+Password: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+What I learned:
+
+SSH private keys require 600 permissions (chmod 600) to be accepted
+
+scp -P (capital P) copies files over SSH using a specific port
+
+OverTheWire blocks localhost SSH connections, so you must connect from your own machine
+
+The -i option for ssh specifies a private key file to use for authentication
+
+Once logged in as another user, you can read files only they have access to
